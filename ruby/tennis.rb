@@ -19,7 +19,6 @@ class TennisGame1
   
   def score
     result = ""
-    tempScore=0
     if (@player1_points==@player2_points)
       result = {
           0 => "Love-All",
@@ -38,20 +37,14 @@ class TennisGame1
         result ="Win for player2"
       end
     else
-      (1...3).each do |i|
-        if (i==1)
-          tempScore = @player1_points
-        else
-          result+="-"
-          tempScore = @player2_points
-        end
-        result += {
-            0 => "Love",
-            1 => "Fifteen",
-            2 => "Thirty",
-            3 => "Forty",
-        }[tempScore]
-      end
+      result = [@player1_points, @player2_points].map do |point|
+        {
+          0 => "Love",
+          1 => "Fifteen",
+          2 => "Thirty",
+          3 => "Forty",
+        }[point]
+      end.join("-")
     end
     result
   end
