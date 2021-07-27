@@ -18,9 +18,8 @@ class TennisGame1
   end
   
   def score
-    result = ""
     if (@player1_points==@player2_points)
-      result = {
+      {
           0 => "Love-All",
           1 => "Fifteen-All",
           2 => "Thirty-All",
@@ -28,16 +27,16 @@ class TennisGame1
     elsif (@player1_points>=4 or @player2_points>=4)
       minusResult = @player1_points-@player2_points
       if (minusResult==1)
-        result ="Advantage player1"
+        "Advantage player1"
       elsif (minusResult ==-1)
-        result ="Advantage player2"
+        "Advantage player2"
       elsif (minusResult>=2)
-        result = "Win for player1"
+         "Win for player1"
       else
-        result ="Win for player2"
+        "Win for player2"
       end
     else
-      result = [@player1_points, @player2_points].map do |point|
+      [@player1_points, @player2_points].map do |point|
         {
           0 => "Love",
           1 => "Fifteen",
@@ -46,7 +45,6 @@ class TennisGame1
         }[point]
       end.join("-")
     end
-    result
   end
 end
 
